@@ -1,0 +1,59 @@
+{
+    "name": "react-admin-dashboard",
+    "version": "0.1.0",
+    "private": true,
+    "homepage": "https://llorentegerman.github.io/react-admin-dashboard",
+    "dependencies": {
+        "@antv/l7": "latest",
+        "@antv/l7-maps": "latest",
+        "@antv/l7-react": "2.3.9",
+        "prop-types": "^15.7.2",
+        "react": "^16.13.1",
+        "react-burger-menu": "^2.6.13",
+        "react-collapsible-content": "^1.0.0",
+        "react-dom": "^16.8.6",
+        "react-jss": "^10.4.0",
+        "react-router-dom": "^5.2.0",
+        "react-scripts": "3.4.3",
+        "react-svg-line-chart": "^2.0.1",
+        "simple-flexbox": "^2.3.1",
+        "react-annotation": "2.2.1",
+        "react-simple-maps": "2.0.0",
+        "@vx/pattern": "0.0.192",
+        "react-tooltip": "latest",
+        "react-live-clock": "4.0.5",
+        "react-world-flags": "latest",
+        "react-blink-tag": "latest",
+        "react-sweet-progress": "latest",
+        "svg-gauge": "latest",
+        "recharts": "2.0.3",
+        "convert-excel-to-json": "^1.7.0",
+        "d3": "^6.7.0",
+        "react-globe.gl": "^2.18.1",
+        "three-glow-mesh": "^0.1.2",
+        "web-vitals": "^1.1.0",
+        "xlsx": "^0.12.13",
+        "react-country-flag": "2.3.0",
+        "react-flagpack": "0.1.1",
+        "react-flags-select": "2.0.2",
+        "@weknow/react-bubble-chart-d3": "latest"
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject",
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d build"
+    },
+    "eslintConfig": {
+        "extends": "react-app"
+    },
+    "browserslist": {
+        "production": [">0.2%", "not dead", "not op_mini all"],
+        "development": ["last 1 chrome version", "last 1 firefox version", "last 1 safari version"]
+    },
+    "devDependencies": {
+        "gh-pages": "^2.0.1"
+    }
+}

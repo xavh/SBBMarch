@@ -1,0 +1,26 @@
+<span className={classes.itemTitle}>ORDER / SHIPPING / PAYMENT / CUSTOMER</span>
+
+<Gauge
+    id='gauge-container four'
+    value={item.orders}
+
+    // any other options you want
+/>
+
+<Gauge
+    id='gauge-container'
+    value={item.orders}
+
+    // any other options you want
+/>
+<Gauge
+    id='gauge-container'
+    value={item.orders}
+
+    // any other options you want
+/>
+
+
+map sur dashboard
+<MapChart containerStyles={classes.unresolvedTickets} />
+import MapChart from './MapComponent';
