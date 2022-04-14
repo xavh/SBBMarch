@@ -14,12 +14,13 @@ export default function CustomGlobe() {
     const [selectedCountry, setSelectedCountry] = useState({
         lat: country.latitude,
         lng: country.longitude,
-        label: country.name
+        label: country.name,
+        code: country.country
     });
     const [hex, setHex] = useState({ features: [] });
     const OPACITY = 0.7;
 
-    //Marker markets
+    //Marker markets points
     const markerData = [
         {
             //Paris
@@ -27,7 +28,7 @@ export default function CustomGlobe() {
             lng: 2.257370003185798,
             size: 0,
             color: 'green',
-            radius: 0.5
+            radius: 0.4
         },
 
         {
@@ -36,15 +37,31 @@ export default function CustomGlobe() {
             lng: 139.7416110129884,
             size: 0,
             color: 'green',
-            radius: 0.5
+            radius: 0.4
+        },
+        {
+            //Tokyo API point 2
+            lat: 35.681737203956395,
+            lng: 138.7416110129884,
+            size: 0,
+            color: 'yellow',
+            radius: 0.4
+        },
+        {
+            //Tokyo API point 3
+            lat: 35.681737203956395,
+            lng: 137.7416110129884,
+            size: 0,
+            color: 'blue',
+            radius: 0.4
         },
         //New York
         {
             lat: 40.76394297513674,
             lng: -73.97237854380262,
             size: 0,
-            color: 'red',
-            radius: 0.5
+            color: 'green',
+            radius: 0.4
         },
         //London
         {
@@ -52,7 +69,7 @@ export default function CustomGlobe() {
             lng: -0.1342772214014758,
             size: 0,
             color: 'green',
-            radius: 0.5
+            radius: 0.4
         },
 
         // Taipei
@@ -61,7 +78,7 @@ export default function CustomGlobe() {
             lng: 121.53819514157121,
             size: 0,
             color: 'green',
-            radius: 0.5
+            radius: 0.4
         },
         // Rome
 
@@ -70,7 +87,7 @@ export default function CustomGlobe() {
             lng: 12.48427651384003,
             size: 0,
             color: 'green',
-            radius: 0.5
+            radius: 0.4
         },
         // Madrid
         {
@@ -78,7 +95,7 @@ export default function CustomGlobe() {
             lng: -3.6864319245893853,
             size: 0,
             color: 'green',
-            radius: 0.5
+            radius: 0.4
         },
         // Berlin
         {
@@ -86,7 +103,7 @@ export default function CustomGlobe() {
             lng: 13.30983599895552,
             size: 0,
             color: 'green',
-            radius: 0.5
+            radius: 0.4
         },
         //Amsterdam
 
@@ -95,7 +112,7 @@ export default function CustomGlobe() {
             lng: 4.879162888534921,
             size: 0,
             color: 'green',
-            radius: 0.5
+            radius: 0.4
         },
         //Brussels
         {
@@ -103,7 +120,7 @@ export default function CustomGlobe() {
             lng: 4.355531822907267,
             size: 0,
             color: 'green',
-            radius: 0.5
+            radius: 0.4
         },
         //Geneva
 
@@ -112,7 +129,7 @@ export default function CustomGlobe() {
             lng: 6.148283977934767,
             size: 0,
             color: 'green',
-            radius: 0.5
+            radius: 0.4
         }
     ];
     //orders status
@@ -124,11 +141,30 @@ export default function CustomGlobe() {
             startLng: 2.257370003185798,
             endLat: 35.681737203956395,
             endLng: 139.7416110129884,
-            color: ' green'
+            color: 'red'
+        },
+        {
+            //Paris-Tokyo link lengow API- OK
+            label: 'LENGOW',
+            startLat: 48.886136689965554,
+            startLng: 2.257370003185798,
+            endLat: 35.681737203956395,
+            endLng: 138.7416110129884,
+            color: ' red'
+        },
+        {
+            //Paris-Tokyo link lengow API- OK
+            label: 'API SAMPLE',
+            startLat: 48.886136689965554,
+            startLng: 2.257370003185798,
+            endLat: 35.681737203956395,
+            endLng: 137.7416110129884,
+            color: 'red'
         },
 
         {
             //Paris-Rome link - OK
+            label: 'TEST',
             startLat: 48.886136689965554,
             startLng: 2.257370003185798,
             endLat: 41.9026202275619,
@@ -137,6 +173,7 @@ export default function CustomGlobe() {
         },
         {
             //Paris-Amsterdam link - OK
+            label: 'TEST',
             startLat: 48.886136689965554,
             startLng: 2.257370003185798,
             endLat: 52.3598172794828,
@@ -145,15 +182,16 @@ export default function CustomGlobe() {
         },
         {
             //Paris - NewYork link - OK
+            label: 'TEST',
             startLat: 48.886136689965554,
             startLng: 2.257370003185798,
             endLat: 40.76394297513674,
             endLng: -73.97237854380262,
-            color: 'red'
+            color: 'green'
         },
         {
             // Paris - Taipei link - OK
-
+            label: 'TEST',
             startLat: 48.886136689965554,
             startLng: 2.257370003185798,
 
@@ -163,6 +201,7 @@ export default function CustomGlobe() {
         },
         // Paris - London link - OK
         {
+            label: 'TEST',
             startLat: 48.886136689965554,
             startLng: 2.257370003185798,
 
@@ -172,6 +211,7 @@ export default function CustomGlobe() {
         },
         // Paris - Madrid link - OK
         {
+            label: 'TEST',
             startLat: 48.886136689965554,
             startLng: 2.257370003185798,
 
@@ -181,6 +221,7 @@ export default function CustomGlobe() {
         },
         // Paris - Berlin link -
         {
+            label: 'TEST',
             startLat: 48.886136689965554,
             startLng: 2.257370003185798,
             endLat: 52.50004064118636,
@@ -189,6 +230,7 @@ export default function CustomGlobe() {
         },
         // Paris - Amsterdam link -
         {
+            label: 'TEST',
             startLat: 48.886136689965554,
             startLng: 2.257370003185798,
 
@@ -198,6 +240,7 @@ export default function CustomGlobe() {
         },
         // Paris - Brussels link -
         {
+            label: 'TEST',
             startLat: 48.886136689965554,
             startLng: 2.257370003185798,
 
@@ -207,6 +250,7 @@ export default function CustomGlobe() {
         },
         // Paris - Geneva link -
         {
+            label: 'TEST',
             startLat: 48.886136689965554,
             startLng: 2.257370003185798,
             endLat: 46.20377540905383,
@@ -214,43 +258,6 @@ export default function CustomGlobe() {
             color: 'green'
         }
     ];
-
-    //locas
-    const [locas, setLocas] = useState({ features: [] });
-    const [altitude, setAltitude] = useState(0.1);
-    const [transitionDuration, setTransitionDuration] = useState(1000);
-
-    //copyright
-    const sendMessage = (e) => {
-        e.preventDefault();
-        alert('Proudly dev by XXX');
-    };
-
-    const markerSvg = `<svg viewBox="-4 0 36 36">
-    <path fill="currentColor" d="M14,0 C21.732,0 28,5.641 28,12.6 C28,23.963 14,36 14,36 C14,36 0,24.064 0,12.6 C0,5.641 6.268,0 14,0 Z"></path>
-    <circle fill="black" cx="14" cy="14" r="7"></circle>
-  </svg>`;
-
-    // Gen random data
-    const Z = 30;
-    const zData = [...Array(Z).keys()].map(() => ({
-        lat: (Math.random() - 0.5) * 180,
-        lng: (Math.random() - 0.5) * 360,
-        size: 7 + Math.random() * 30,
-        color: ['blue', 'green'][Math.round(Math.random() * 3)]
-    }));
-
-    // Alert status notification
-    // Gen random data
-    const N = 10;
-    const gData = [...Array(N).keys()].map(() => ({
-        lat: 40.76394297513674,
-        lng: -73.97237854380262,
-        maxR: 6,
-        propagationSpeed: (Math.random() - 0.5) * 20 + 1,
-        repeatPeriod: Math.random() * 2000 + 200
-    }));
-    const colorInterpolator = (t) => `rgba(255,0,0,${Math.sqrt(1 - t)})`;
 
     const [hoverArc, setHoverArc] = useState();
 
@@ -268,10 +275,11 @@ export default function CustomGlobe() {
                 setSelectedCountry({
                     lat: country.latitude,
                     lng: country.longitude,
-                    label: country.name
+                    label: country.name,
+                    code: country.country
                 });
             })();
-        }, 3000); //Every 3 seconds
+        }, 5000); //Every 3 seconds
         return () => {
             if (interval) {
                 clearInterval(interval);
@@ -287,130 +295,65 @@ export default function CustomGlobe() {
         globeEl.current.pointOfView(MAP_CENTER, 0);
     }, [globeEl]);
 
-    useEffect(() => {
-        // load data for markers orders
-        fetch('./data/ne_110m_admin_0_countries.geojson')
-            .then((res) => res.json())
-            .then((locas) => {
-                setLocas(locas);
-
-                setTimeout(() => {
-                    setTransitionDuration(4000);
-                    setAltitude(() => (feat) =>
-                        Math.max(0.1, Math.sqrt(+feat.properties.POP_EST) * 7e-5)
-                    );
-                }, 3000);
-            });
-    }, []);
-
-    //useEffect(() => {
-    //  const countryLocation = {
-    //     lat: selectedCountry.lat,
-    //     lng: selectedCountry.lng,
-    //     label: selectedCountry.name,
-    //     altitude: 1.5
-    //  };
-
-    //   globeEl.current.pointOfView(countryLocation, 0);
-    // }, [selectedCountry]);
-
     return (
         <Globe
-            // Marker data for orders
-            // htmlElementsData={zData}
-            // htmlElement={(d) => {
-            //     const el = document.createElement('div');
-            //    el.innerHTML = markerSvg;
-            //   el.style.color = d.color;
-            //   el.style.width = `${d.size}px`;
-
-            //   el.style['pointer-events'] = 'auto';
-            //   el.style.cursor = 'pointer';
-            //  el.onclick = () => console.info(d);
-            //   return el;
-            // }}
             ref={globeEl}
-            //backgroundImageUrl={'/images/nighty-sky.png'}
-            globeImageUrl='/images/globe_tx.png'
+            //globeImageUrl='/images/globe_tx.png'
+            globeImageUrl='/images/no_clouds_8k.png'
             //globeImageUrl='//unpkg.com/three-globe/example/img/earth-night.jpg'
             //globeImageUrl='//unpkg.com/three-globe/example/img/earth-blue-marble.jpg'
-            bumpImageUrl='//unpkg.com/three-globe/example/img/earth-topology.png'
+            //bumpImageUrl='//unpkg.com/three-globe/example/img/earth-topology.png'
             backgroundColor='rgba(0,0,0,0)'
             labelsData={[selectedCountry]}
             labelText={'label'}
-            labelSize={1.5}
+            labelLabel={(d) => `
+            <div style= background:black
+            ><div><b>${d.label}</b></div>
+        <div>Code:${d.code} - Country:${d.label} </div>
+        <div>
+        <i>Longitude: ${d.lng}</i>
+        <i>Latitude:${d.lat}</i>
+        
+        </div></div>
+      `}
+            labelSize={0.7}
             labelColor={useCallback(() => 'black', [])}
             labelDotRadius={0.4}
             labelAltitude={0.005}
             labelIncludeDot={false}
-            //labelDotOrientation={d => labelsTopOrientation.has(d.label) ? 'top' : 'bottom'}
-            //labelColor={d => colorScale(d.agency)}
-            // labelLabel={d => `
-            //<div><b>${d.label}</b></div>
-            //<div>${d.agency} - ${d.program} Program</div>
-            //<div>Landing on <i>${new Date(d.date).toLocaleDateString()}</i></div>
-            // `     }
-            //      onLabelClick={d => window.open(d.url, '_blank')}
-            // />;
-
             hexPolygonsData={hex.features}
             hexPolygonResolution={3} //values higher than 3 makes it buggy
             hexPolygonMargin={0.1}
-            hexPolygonColor={useCallback(() => '#dddddd', [])}
-            //hexPolygonColor={useCallback(() => '#ffffff', [])}
+            hexPolygonColor={useCallback(() => 'red', [])}
+            hexPolygonAltitude={0.0015}
             pointsData={markerData}
             pointAltitude='size'
             pointRadius='radius'
             pointColor='color'
-            pointsMerge={false}
+            pointsMerge={true}
             animateIn={true}
-            width={1200}
-            height={700}
+            width={1100}
+            height={650}
             showGlobe={true}
             showGraticules={true}
             showAtmosphere={true}
-            atmosphereAltitude={0.3}
-            atmosphereColor='rgba(219, 220, 224, 0.2)'
-            //onGlobeClick({ lat, lng }, event)
-            //onGlobeRightClick({ lat, lng }, event)
-
-            //polygonsData={countries.features.filter(d => d.properties.ISO_A2 !== 'AQ')}
-            // polygonAltitude={altitude}
-            //  polygonCapColor={() => 'rgba(200, 0, 0, 0.6)'}
-            //  polygonSideColor={() => 'rgba(0, 100, 0, 0.15)'}
-            //  polygonLabel={({ properties: d }) => `
-            //   <b>${d.ADMIN} (${d.ISO_A2})</b> <br />
-            //   Population: <i>${Math.round(+d.POP_EST / 1e4) / 1e2}M</i>
-            // `}
-            //  polygonsTransitionDuration={transitionDuration}
-
-            polygonsData={locas.features.filter((d) => d.properties.ISO_A2 !== 'AQ')}
-            polygonAltitude={altitude}
-            polygonCapColor={() => 'rgba(200, 0, 0, 0.6)'}
-            polygonSideColor={() => 'rgba(0, 100, 0, 0.15)'}
-            polygonLabel={({ properties: d }) => `
-              <b>${d.ADMIN} (${d.ISO_A2})</b> <br />
-              Population: <i>${Math.round(+d.POP_EST / 1e4) / 1e2}M</i>
-            `}
-            polygonsTransitionDuration={transitionDuration}
-            ringsData={gData}
-            ringColor={() => colorInterpolator}
-            ringMaxRadius='maxR'
-            ringPropagationSpeed='propagationSpeed'
-            ringRepeatPeriod='repeatPeriod'
+            atmosphereAltitude={0.1}
+            atmosphereColor='black'
+            //arcColor={(d) => [`rgba(0, 255, 0, ${OPACITY})`, `rgba(255, 0, 0, ${OPACITY})`]}
             arcColor={'color'}
+            arcStroke={0.3}
             arcsData={arcsData}
             arcAltitude={0.125}
-            arcLabel={'label'}
+            arcLabel={(d) => `
+            <div style= background:#323641
+            ><div><b>${d.label}</b></div>
+        
+        </div></div>
+      `}
             arcDashLength={0.5}
             arcDashGap={0.01}
-            arcDashAnimateTime={1500}
-            arcsTransitionDuration={1000}
-            //arcColor={(d) => {
-            //   const op = !hoverArc ? OPACITY : d === hoverArc ? 0.9 : OPACITY / 4;
-            //   return [`rgba(0, 255, 0, ${op})`, `rgba(0, 255, 0, ${op})`];
-            //}}
-            onArcHover={setHoverArc}
+            arcDashAnimateTime={2000}
+            arcsTransitionDuration={2000}
         />
     );
 }

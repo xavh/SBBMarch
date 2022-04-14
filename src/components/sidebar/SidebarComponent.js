@@ -3,7 +3,7 @@ import { createUseStyles, useTheme } from 'react-jss';
 import { useHistory } from 'react-router-dom';
 import SLUGS from 'resources/slugs';
 
-import FLAGS from 'components/flags/allflags';
+//import FLAGS from 'components/flags/allflags';
 import {
     BEFlag,
     CAFlag,

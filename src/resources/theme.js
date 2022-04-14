@@ -10,7 +10,8 @@ const color = {
     lightGrayishBlue2: '#DFE0EB',
     paleBlue: '#DDE2FF',
     paleBlueTransparent: 'rgba(221, 226, 255, 0.08)',
-    veryDarkGrayishBlue: '#373a47'
+    veryDarkGrayishBlue: '#373a47',
+    veryWhite: '#white'
 };
 
 const typography = {
@@ -40,21 +41,21 @@ const typography = {
     },
     itemTitle: {
         fontWeight: 600,
-        fontSize: 11,
+        fontSize: 12,
         lineHeight: '12px',
         letterSpacing: 0.1
     },
     itemLegend: {
         fontWeight: 200,
-        fontSize: 9,
-        lineHeight: '9px',
+        fontSize: 7,
+        lineHeight: '7px',
         letterSpacing: 0.1
     },
 
     title: {
         fontWeight: 'bold',
-        fontSize: 24,
-        lineHeight: '30px',
+        fontSize: 18,
+        lineHeight: '20px',
         letterSpacing: 0.3
     }
 };

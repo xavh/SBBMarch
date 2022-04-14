@@ -1,0 +1,14 @@
+.react-sweet-progress-symbol {
+    color: #fff !important;
+}
+
+.react-sweet-progress-line-inner {
+    max-width: 100px !important;
+}
+.react-sweet-progress-line {
+    max-width: 100px !important;
+    background-color: rgba(0, 0, 0, 0.2) !important;
+}
+.react-sweet-progress {
+    justify-content: left !important;
+}

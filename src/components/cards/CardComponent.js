@@ -4,8 +4,9 @@ import { createUseStyles, useTheme } from 'react-jss';
 
 const useStyles = createUseStyles((theme) => ({
     container: {
-        backgroundColor: '#FFFFFF',
-        border: `1px solid ${theme.color.lightGrayishBlue2}`,
+        backgroundColor: '#F7F8FC',
+
+        //border: `1px solid ${theme.color.lightGrayishBlue2}`,
         borderRadius: 4,
         padding: '2px 2px 2px 2px',
         height: '100%'
@@ -20,7 +21,7 @@ const useStyles = createUseStyles((theme) => ({
         paddingRight: 32,
         paddingBottom: 0,
         paddingTop: 0,
-        borderBottom: `1px solid ${theme.color.lightGrayishBlue2}`,
+        //borderBottom: `1px solid ${theme.color.lightGrayishBlue2}`,
         '&:last-child': {
             borderBottom: 'none'
         }
@@ -76,13 +77,13 @@ function CardComponent(props) {
                 flexGrow={1}
                 vertical='center'
                 horizontal='spaced'
-                style={{ backgroundColor: 'grey' }}
+                style={{ backgroundColor: '#323641', maxHeight: 24 }}
             >
-                <Column flexGrow={1} style={{ backgroundColor: 'blue', color: 'white' }}>
+                <Column
+                    flexGrow={1}
+                    style={{ backgroundColor: '#f7f8fc', color: theme.color.veryWhite }}
+                >
                     <div className='led-box'>
-                        <div className='led-green'>
-                            <p>URL.COM</p>
-                        </div>
                         <div className='led-green'>
                             <p>ACCOUNT</p>
                         </div>
@@ -90,26 +91,33 @@ function CardComponent(props) {
                         <div className='led-green'>
                             <p>BASKET</p>
                         </div>
-                    </div>
-                </Column>
-                <Column flexGrow={1} style={{ backgroundColor: 'red', color: 'white' }}>
-                    <div className='led-box'>
                         <div className='led-red'>
                             <p>CATEGORY</p>
                         </div>
+                    </div>
+                </Column>
+                <Column
+                    flexGrow={1}
+                    style={{ backgroundColor: '#f7f8fc', color: theme.color.veryWhite }}
+                >
+                    <div className='led-box'>
                         <div className='led-green'>
                             <p>INVENTORY</p>
                         </div>
                         <div className='led-green'>
                             <p>ORDER</p>
                         </div>
-                    </div>
-                </Column>
-                <Column flexGrow={1} style={{ backgroundColor: 'green', color: 'white' }}>
-                    <div className='led-box'>
+
                         <div className='led-green'>
                             <p>PAYMENT</p>
                         </div>
+                    </div>
+                </Column>
+                <Column
+                    flexGrow={1}
+                    style={{ backgroundColor: '#f7f8fc', color: theme.color.veryWhite }}
+                >
+                    <div className='led-box'>
                         <div className='led-green'>
                             <p>PSP</p>
                         </div>

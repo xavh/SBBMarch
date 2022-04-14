@@ -52,18 +52,20 @@
 .led-box {
     height: 20px;
     width: 100%;
-    margin: 2px 0;
+    margin: 4px 0px 0px 0px;
     float: left;
     display: flex;
 }
 
 .led-box p {
     padding-left: 15px;
-    font-size: 0.5em;
+    font-size: 0.45em;
+    color: #25262b;
+    text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.5); /* 50% white from bottom */
 }
 
 .led-red {
-    margin: 0 auto;
+    margin-right: auto;
     width: 12px;
     height: 12px;
     background-color: #f00;
@@ -223,7 +225,7 @@
 }
 
 .led-green {
-    margin: 0 auto;
+    margin-right: auto;
     width: 12px;
     height: 12px;
     background-color: #abff00;
@@ -234,7 +236,7 @@
 }
 
 .led-blue {
-    margin: 0 auto;
+    margin-right: auto;
     width: 12px;
     height: 12px;
     background-color: #24e0ff;

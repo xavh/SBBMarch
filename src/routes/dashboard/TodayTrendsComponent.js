@@ -6,7 +6,7 @@ import LineChart from 'react-svg-line-chart';
 const data = [];
 
 for (let x = 1; x <= 24; x++) {
-    data.push({ x: x, y: Math.floor(Math.random() * 100) });
+    data.push({ x: x, y: Math.floor(Math.random() * 1000) });
 }
 
 const useStyles = createUseStyles((theme) => ({
@@ -14,13 +14,26 @@ const useStyles = createUseStyles((theme) => ({
         backgroundColor: '#FFFFFF',
         border: `1px solid ${theme.color.lightGrayishBlue2}`,
         borderRadius: 4,
-        cursor: 'pointer'
+        cursor: 'pointer',
+        maxHeight: 330,
+        marginRight: 30
+    },
+    title: {
+        ...theme.typography.cardTitle,
+        color: theme.color.grayishBlue2,
+        marginBottom: 12,
+        minWidth: 102,
+        fontWeight: 'normal',
+        fontSize: 12,
+        letterSpacing: '1px',
+        lineHeight: '14px',
+        textAlign: 'center'
     },
     graphContainer: {
         marginTop: 24,
         marginLeft: 0,
         marginRight: 0,
-        width: '100%'
+        width: '80%'
     },
     graphSection: {
         padding: 24
@@ -49,7 +62,7 @@ const useStyles = createUseStyles((theme) => ({
     statContainer: {
         borderBottom: `1px solid ${theme.color.lightGrayishBlue2}`,
         padding: '24px 32px 24px 32px',
-        height: 'calc(114px - 48px)',
+        height: 'calc(100px - 48px)',
         '&:last-child': {
             border: 'none'
         }
@@ -60,8 +73,8 @@ const useStyles = createUseStyles((theme) => ({
     },
     statTitle: {
         fontWeight: '600',
-        fontSize: 16,
-        lineHeight: '22px',
+        fontSize: 12,
+        lineHeight: '12px',
         letterSpacing: '0.3px',
         textAlign: 'center',
         color: theme.color.grayishBlue2,
@@ -71,7 +84,9 @@ const useStyles = createUseStyles((theme) => ({
     statValue: {
         ...theme.typography.title,
         textAlign: 'center',
-        color: theme.color.veryDarkGrayishBlue
+        color: theme.color.veryDarkGrayishBlue,
+        fontSize: 12,
+        lineHeight: '12px'
     }
 }));
 
@@ -118,15 +133,14 @@ function TodayTrendsComponent() {
             >
                 <Row wrap horizontal='space-between'>
                     <Column>
-                        <span className={classes.graphTitle}>Today’s trends</span>
-                        <span className={classes.graphSubtitle}>as of 25 May 2019, 09:41 PM</span>
+                        <span className={classes.title}>Revenue</span>
                     </Column>
                     {renderLegend(theme.color.lightBlue, 'Today')}
                 </Row>
                 <div className={classes.graphContainer}>
                     <LineChart
                         data={data}
-                        viewBoxWidth={500}
+                        //viewBoxWidth={500}
                         pointsStrokeColor={theme.color.lightBlue}
                         areaColor={theme.color.lightBlue}
                         areaVisible={true}
@@ -137,11 +151,12 @@ function TodayTrendsComponent() {
                 <div />
             </Column>
             <Column flexGrow={3} flexBasis='342px' breakpoints={{ 1024: classes.stats }}>
-                {renderStat('Resolved', '449')}
-                {renderStat('Received', '426')}
-                {renderStat('Average first response time', '33m')}
-                {renderStat('Average response time', '3h 8m')}
-                {renderStat('Resolution within SLA', '94%')}
+                {renderStat('Revenue', '5.608.204€')}
+                {renderStat('Number of Orders', '42.000')}
+                {renderStat('Number of Visits', '0')}
+                {renderStat('Number of Sessions', '0')}
+                {renderStat('Average Order Value', '91€')}
+                {renderStat('Order Conversion Rate', '5,91%')}
             </Column>
         </Row>
     );

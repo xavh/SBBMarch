@@ -6,6 +6,7 @@ import Clock from 'react-live-clock';
 import Flag from 'react-world-flags';
 // import Blink from 'react-blink-tag';
 import { Progress } from 'react-sweet-progress';
+import './sweet-progress.css';
 import 'react-sweet-progress/lib/style.css';
 // import Gauge from 'components/gauge/gauge';
 import 'components/led/led.css';
@@ -20,17 +21,26 @@ const useStyles = createUseStyles((theme) => ({
     },
     itemTitle: {
         ...theme.typography.itemTitle,
-        color: theme.color.veryDarkGrayishBlue
+        color: theme.color.veryWhite,
+        marginTop: 5,
+        marginLeft: 5
     },
     itemLegend: {
         ...theme.typography.itemLegend,
-        color: theme.color.veryDarkGrayishBlue
+        color: theme.color.veryWhite
     },
+
     itemValue: {
-        color: theme.color.grayishBlue2
+        color: theme.color.veryWhite
+    },
+    itemPercent: {
+        ...theme.typography.itemPercent,
+        color: theme.color.veryWhite,
+        position: 'absolute',
+        zIndex: 1
     },
     greyTitle: {
-        color: theme.color.grayishBlue3
+        color: theme.color.veryWhite
     },
     tagStyles: {
         borderRadius: 5,
@@ -44,6 +54,17 @@ const useStyles = createUseStyles((theme) => ({
     checkboxWrapper: {
         cursor: 'pointer',
         marginRight: 16
+    },
+    separator: {
+        borderLeft: `1px solid ${theme.color.lightGrayishBlue2}`,
+        marginLeft: 32,
+        marginRight: 32,
+        height: 32,
+        width: 2,
+        '@media (max-width: 768px)': {
+            marginLeft: 14,
+            marginRight: 0
+        }
     }
 }));
 
@@ -63,12 +84,16 @@ function OrdersMiniComponent(props) {
             checked: false,
             tag: TAGS.LOW,
             flag: 'JP',
+            fx: 'flag',
             timezone: 'Asia/Tokyo',
-            percent: '26',
-            orders: '11295'
+            percent: '126',
+            orders: '11295',
+            status: 'active',
+            oos: '14',
+            oosstatus: 'high'
         },
         {
-            title: 'USA',
+            title: 'UNITED STATES OF AMERICA',
             checked: false,
             tag: TAGS.ALERT,
             flag: 'US',
@@ -76,7 +101,9 @@ function OrdersMiniComponent(props) {
             blink: 'slow',
             percent: '0',
             orders: '0',
-            status: 'error'
+            status: 'error',
+            oos: '8',
+            oosstatus: 'low'
         },
         {
             title: 'FRANCE',
@@ -85,7 +112,8 @@ function OrdersMiniComponent(props) {
             flag: 'FR',
             timezone: 'Europe/Paris',
             percent: '22',
-            orders: '89'
+            orders: '89',
+            oos: '10'
         },
         {
             title: 'TAIWAN',
@@ -94,7 +122,8 @@ function OrdersMiniComponent(props) {
             flag: 'TW',
             timezone: 'Asia/Taipei',
             percent: '80',
-            orders: '76'
+            orders: '76',
+            oos: '3'
         },
         {
             title: 'UNITED KINGDOM',
@@ -103,7 +132,8 @@ function OrdersMiniComponent(props) {
             flag: 'GB',
             timezone: 'Europe/London',
             percent: '100',
-            orders: '96'
+            orders: '96',
+            oos: '10'
         },
         {
             title: 'GERMANY',
@@ -112,7 +142,8 @@ function OrdersMiniComponent(props) {
             flag: 'DE',
             timezone: 'Europe/Berlin',
             percent: '58',
-            orders: '16'
+            orders: '16',
+            oos: '10'
         },
         {
             title: 'ITALY',
@@ -121,7 +152,8 @@ function OrdersMiniComponent(props) {
             flag: 'IT',
             timezone: 'Europe/Rome',
             percent: '97',
-            orders: '36'
+            orders: '36',
+            oos: '10'
         },
         {
             title: 'BELGIUM',
@@ -130,7 +162,8 @@ function OrdersMiniComponent(props) {
             flag: 'BE',
             timezone: 'Europe/Brussels',
             percent: '32',
-            orders: '16'
+            orders: '16',
+            oos: '10'
         },
         {
             title: 'NETHERLANDS',
@@ -139,7 +172,8 @@ function OrdersMiniComponent(props) {
             flag: 'NL',
             timezone: 'Europe/Amsterdam',
             percent: '2',
-            orders: '6'
+            orders: '6',
+            oos: '10'
         },
         {
             title: 'SPAIN',
@@ -148,7 +182,8 @@ function OrdersMiniComponent(props) {
             flag: 'ES',
             timezone: 'Europe/Madrid',
             percent: '89',
-            orders: '5'
+            orders: '5',
+            oos: '11'
         },
         {
             title: 'SWITZERLAND',
@@ -157,7 +192,88 @@ function OrdersMiniComponent(props) {
             flag: 'CH',
             timezone: 'Europe/Zurich',
             percent: '12',
-            orders: '1'
+            orders: '1',
+            oos: '8'
+        },
+        {
+            title: 'SWITZERLAND',
+            checked: false,
+            tag: TAGS.LOW,
+            flag: 'CH',
+            timezone: 'Europe/Zurich',
+            percent: '12',
+            orders: '1',
+            oos: '8'
+        },
+        {
+            title: 'SWITZERLAND',
+            checked: false,
+            tag: TAGS.LOW,
+            flag: 'CH',
+            timezone: 'Europe/Zurich',
+            percent: '12',
+            orders: '1',
+            oos: '8'
+        },
+        {
+            title: 'SWITZERLAND',
+            checked: false,
+            tag: TAGS.LOW,
+            flag: 'CH',
+            timezone: 'Europe/Zurich',
+            percent: '12',
+            orders: '1',
+            oos: '8'
+        },
+        {
+            title: 'SWITZERLAND',
+            checked: false,
+            tag: TAGS.LOW,
+            flag: 'CH',
+            timezone: 'Europe/Zurich',
+            percent: '12',
+            orders: '1',
+            oos: '8'
+        },
+        {
+            title: 'SWITZERLAND',
+            checked: false,
+            tag: TAGS.LOW,
+            flag: 'CH',
+            timezone: 'Europe/Zurich',
+            percent: '12',
+            orders: '1',
+            oos: '8'
+        },
+        {
+            title: 'SWITZERLAND',
+            checked: false,
+            tag: TAGS.LOW,
+            flag: 'CH',
+            timezone: 'Europe/Zurich',
+            percent: '12',
+            orders: '1',
+            oos: '8'
+        },
+        {
+            title: 'SWITZERLAND',
+            checked: false,
+            tag: TAGS.LOW,
+            flag: 'CH',
+            timezone: 'Europe/Zurich',
+            percent: '12',
+            orders: '1',
+            oos: '8'
+        },
+        {
+            title: 'SWITZERLAND',
+            checked: false,
+            tag: TAGS.LOW,
+            flag: 'CH',
+            timezone: 'Europe/Zurich',
+            percent: '12',
+            orders: '1',
+            oos: '8'
         }
     ]);
 
@@ -185,61 +301,114 @@ function OrderComponent({ classes, index, item = {} }) {
                 <Row
                     wrap
                     horizontal='spaced'
-                    breakpoints={{ 80: 'column' }}
-                    //style={{ color: '#E0E0E0' }}
+                    breakpoints={{ 900: 'column' }}
+                    style={{
+                        color: '#E0E0E0',
+                        backgroundColor: '#323641',
+                        //backgroundColor: '#F7F8FC',
+                        borderBottom: '1px solid rgba(0,0,0,0.5)',
+                        borderTop: '1px solid rgba(155,155,155,0.5)'
+                    }}
                 >
                     <Column
                         style={{
-                            //backgroundColor: '#3F4B3B',
-                            minWidth: 20
-                            //padding: 12
+                            maxWidth: 30,
+                            horizontal: 'left'
+                            //justifyContent: 'center' //Centered vertically
                         }}
                         breakpoints={{
-                            300: { backgroundColor: '#0A1128' },
-                            200: { backgroundColor: '#8A1128' },
-                            100: { backgroundColor: '#FA1128' }
+                            1000: { backgroundColor: '#0A1128' },
+                            900: { backgroundColor: '#8A1128' },
+                            800: { backgroundColor: '#FA1128' }
                         }}
                         flexGrow={1}
-                        horizontal='left'
+                        horizontal='center'
                     >
-                        <span>
-                            <Flag
-                                code={item.flag}
-                                box-shadow='rgba(0, 0, 0, 0.2) 0px 1px 4px 1px'
-                                height='24'
-                                width='28'
-                                align='left'
-                                style={{ marginRight: 4 }}
-                            />
-
-                            <span className={classes.itemTitle}>{item.title}</span>
-                        </span>
-                        <Clock
-                            format={'HH:mm:ssA'}
-                            ticking={true}
-                            timezone={item.timezone}
-                            style={{ fontSize: '0.6em' }}
+                        <Flag
+                            code={item.flag}
+                            box-shadow='rgba(0, 0, 0, 0.2) 0px 1px 4px 1px'
+                            height='24'
+                            width='28'
+                            align='left'
+                            style={{ marginRight: 4, marginLeft: 8 }}
                         />
                     </Column>
                     <Column
                         style={{
-                            //backgroundColor: '#5A9367',
-                            //minWidth: 300,
-                            //maxWidth: 300,
-                            padding: 12
+                            maxWidth: 110,
+                            borderRight: '1px solid rgba(0,0,0,0.5)'
+                        }}
+                        breakpoints={{
+                            1000: { backgroundColor: '#0A1128' },
+                            900: { backgroundColor: '#8A1128' },
+                            800: { backgroundColor: '#FA1128' }
                         }}
                         flexGrow={1}
-                        horizontal='center'
-                        breakpoints={{
-                            700: {
-                                //backgroundColor: '#034078',
-                                flexDirection: 'column-reverse'
-                            }
-                        }}
+                        horizontal='left'
                     >
+                        <span className={classes.itemTitle}>{item.title}</span>
+                        <Clock
+                            format={'HH:mm:ssA'}
+                            ticking={true}
+                            timezone={item.timezone}
+                            style={{
+                                fontSize: '0.5em',
+                                marginLeft: 5
+                                //color: '#daf6ff',
+
+                                //textShadowColor: 'rgba(0, 0, 0, 0.75)',
+                                //textShadowOffset: { width: -1, height: 1 },
+                                //textShadowRadius: 10
+                            }}
+                        />
+                    </Column>
+                    <Column
+                        style={{
+                            borderLeft: '1px solid rgba(155,155,155,0.5)',
+                            borderRight: '1px solid rgba(0,0,0,0.5)'
+                        }}
+                        breakpoints={{
+                            1000: { backgroundColor: '#0A1128' },
+                            900: { backgroundColor: '#8A1128' },
+                            800: { backgroundColor: '#FA1128' }
+                        }}
+                        flexGrow={1}
+                        horizontal='left'
+                    >
+                        <span className={classes.itemTitle}>LAST ORDER</span>
+                        <span className={classes.itemTitle}>
+                            <Clock
+                                format={'HH:mm:ssA'}
+                                ticking={true}
+                                timezone={item.timezone}
+                                style={{ fontSize: '1em' }}
+                            />
+                        </span>
+                    </Column>
+                    <Column
+                        style={{
+                            borderLeft: '1px solid rgba(155,155,155,0.5)',
+                            borderRight: '1px solid rgba(0,0,0,0.5)'
+                        }}
+                        breakpoints={{
+                            1000: { backgroundColor: '#0A1128' },
+                            900: { backgroundColor: '#8A1128' },
+                            800: { backgroundColor: '#FA1128' }
+                        }}
+                        flexGrow={1}
+                        horizontal='left'
+                    >
+                        <span className={classes.itemTitle} style={{}}>
+                            {item.orders} ORDER(S)
+                        </span>
                         <Progress
+                            style={{
+                                fontSize: 10,
+                                color: 'white'
+                            }}
                             status={item.status}
                             percent={item.percent}
+                            maxWidth={90}
                             theme={{
                                 error: {
                                     symbol: item.percent + '%',
@@ -261,62 +430,94 @@ function OrderComponent({ classes, index, item = {} }) {
                         />
                         <span className={classes.itemLegend}>COMPARE TO AVG 7 DAYS H-1</span>
                     </Column>
-
                     <Column
                         style={{
-                            //backgroundColor: '#44633F',
-                            minWidth: 20
+                            borderLeft: '1px solid rgba(155,155,155,0.5)',
+                            padding: 5
                         }}
-                        breakpoints={{ 200: { backgroundColor: '#001F54' } }}
-                        flexGrow={1}
-                        horizontal='right'
-                        align='right'
-                    >
-                        <span className={classes.itemTitle}>{item.orders} ORDER(S)</span>
-                        <span className={classes.itemTitle}>
-                            LAST ORDER
-                            <Clock
-                                format={'HH:mm:ssA'}
-                                ticking={true}
-                                timezone={item.timezone}
-                                style={{ fontSize: '0.6em' }}
-                            />
-                        </span>
-                    </Column>
-                </Row>
-
-                <Row wrap horizontal='spaced' style={{ marginTop: 0, color: '#E0E0E0' }}>
-                    <Column
-                        style={
-                            {
-                                //backgroundColor: '#5CAB7D'
-                            }
-                        }
+                        breakpoints={{ 900: { backgroundColor: '#001F54', color: '#fff' } }}
                         flexGrow={1}
                         horizontal='center'
+                    >
+                        <Progress
+                            style={{
+                                fontSize: 10,
+                                color: 'white'
+                            }}
+                            status={item.oosstatus}
+                            percent={item.oos}
+                            type='circle'
+                            strokeWidth={12}
+                            width={30}
+                            theme={{
+                                normal: {
+                                    symbol: item.oos + '%',
+                                    trailColor: '#8be59a',
+                                    color: 'green'
+                                },
+                                low: {
+                                    symbol: item.oos + '%',
+                                    trailColor: '#fff65b',
+                                    color: 'yellow'
+                                },
+
+                                high: {
+                                    symbol: item.oos + '%',
+                                    trailColor: 'pink',
+                                    color: 'red'
+                                }
+                            }}
+                        />
+
+                        <span className={classes.itemLegend}>OOS</span>
+                    </Column>
+                    <Column
+                        style={{
+                            //minWidth: 250,
+                            //maxWidth: 300,
+                            padding: 0
+                            //height: 16,
+                        }}
+                        flexGrow={1}
                         breakpoints={{
                             700: {
-                                // backgroundColor: '#1282A2',
-                                flexDirection: 'column-reverse'
+                                backgroundColor: '#034078'
+                                //flexDirection: 'column-reverse'
                             }
                         }}
                     >
-                        <div className='led-box'>
-                            <div className='led-red'>
+                        <div className='led-box' style={{ display: 'block' }}>
+                            <div className='led-red' style={{ margin: '0px 0px 5px 0px' }}>
                                 <p>LENGOW</p>
                             </div>
 
-                            <div className='led-green'>
+                            <div className='led-green' style={{ margin: '0px 0px 5px 0px' }}>
                                 <p>OLAPIC</p>
                             </div>
-                            <div className='led-green'>
+                        </div>
+                    </Column>
+
+                    <Column
+                        style={{
+                            //minWidth: 250,
+                            //maxWidth: 300,
+                            padding: 0
+                            //height: 16,
+                        }}
+                        flexGrow={1}
+                        breakpoints={{
+                            700: {
+                                backgroundColor: '#034078'
+                                //flexDirection: 'column-reverse'
+                            }
+                        }}
+                    >
+                        <div className='led-box' style={{ display: 'block' }}>
+                            <div className='led-green' style={{ margin: '0px 0px 5px 0px' }}>
                                 <p>QUICKBUY</p>
                             </div>
-                            <div className='led-green'>
+                            <div className='led-green' style={{ margin: '0px 0px 5px 0px' }}>
                                 <p>SAMPLES</p>
-                            </div>
-                            <div className='led-green'>
-                                <p>FEED5</p>
                             </div>
                         </div>
                     </Column>

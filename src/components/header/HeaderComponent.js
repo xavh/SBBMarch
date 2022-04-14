@@ -25,6 +25,7 @@ const useStyles = createUseStyles((theme) => ({
     },
     container: {
         height: 40
+        //background: '#323641'
     },
     name: {
         ...theme.typography.itemTitle,
@@ -122,8 +123,6 @@ function HeaderComponent() {
     return (
         <Row className={classes.container} vertical='center' horizontal='space-between'>
             <span className={classes.title}>{title}</span>
-
-            <span className={classes.version}>SBB v1.2 | SFRA v0.1</span>
 
             <Row vertical='center'>
                 <div className={classes.iconStyles}>

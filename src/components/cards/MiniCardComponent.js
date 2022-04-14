@@ -8,7 +8,7 @@ const useStyles = createUseStyles((theme) => ({
         border: `1px solid ${theme.color.lightGrayishBlue2}`,
         borderRadius: 4,
         cursor: 'pointer',
-        maxWidth: 200,
+        maxWidth: 400,
         padding: '10px 10px',
         '&:hover': {
             borderColor: theme.color.lightBlue,
